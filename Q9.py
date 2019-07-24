@@ -1,20 +1,12 @@
 #Q9 INCOMPLETE
 import numpy as np
-n=np.random.random((5,5))
-Max,Min=0,n[1][1]
-for j in n:
-    for i in j:
-        if i>Max:
-            Max=i
-        if i<Min:
-            Min=i
-print(n,Max,Min)
+n=np.random.randint(0,50,25)
+print(np.reshape(n,(5,5),order='C'))
+print(np.max(n),"is the max and", np.min(n)," is the min")
 x=float(input("Enter Number To Find Closest To: "))
-diff=0
-num=n[1][1]
+y=np.abs(n-x)
+index=np.argmin(y)
+print(n[index])
+Max=n[1]
 for i in n:
-    for j in i:
-        diff=x-i
-        if diff<(x-num):
-            num=i
-print(num)
+    if np.bincount(n, weights=i)>np.bincount(Max)    
